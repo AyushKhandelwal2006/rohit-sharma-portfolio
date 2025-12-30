@@ -3,10 +3,10 @@
 export default function Gallery() {
   const images = [
     { src: "/images/rohit1.jpg", caption: "Match-winning knock 🏏" },
-    { src: "/images/rohit2.png", caption: "Captain Rohit 🇮🇳" },
+    { src: "/images/rohit2.jpg", caption: "Captain Rohit 🇮🇳" },
     { src: "/images/rohit3.jpg", caption: "Hitman in action 💥" },
-    { src: "/images/rohit4.png", caption: "World Cup Glory 🏆" },
-    { src: "/images/rohit5.png", caption: "Calm & Composed 😌" },
+    { src: "/images/rohit4.jpg", caption: "World Cup Glory 🏆" },
+    { src: "/images/rohit5.jpg", caption: "Calm & Composed 😌" },
   ];
 
   return (
