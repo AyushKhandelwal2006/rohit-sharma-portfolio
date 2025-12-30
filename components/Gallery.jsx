@@ -1,43 +1,57 @@
 "use client";
 
+import Image from "next/image";
+import { useState } from "react";
+
 const images = [
   { src: "/images/rohit1.jpg", caption: "Match-winning knock 🏏" },
-  { src: "/images/rohit2.png", caption: "Captain Rohit Sharma 🧢" },
-  { src: "/images/rohit3.jpg", caption: "The Hitman in action 🔥" },
-  { src: "/images/rohit4.png", caption: "Calm & composed leader 😌" },
-  { src: "/images/rohit5.png", caption: "Indian cricket pride 🇮🇳" },
+  { src: "/images/rohit2.png", caption: "Captain Rohit 🇮🇳" },
+  { src: "/images/rohit3.jpg", caption: "The Hitman 🔥" },
+  { src: "/images/rohit4.png", caption: "Pull shot king 👑" },
+  { src: "/images/rohit5.png", caption: "Mumbai Indians Legend 💙" },
 ];
 
 export default function Gallery() {
+  const [index, setIndex] = useState(0);
+
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center bg-[#f5f5f5] py-20">
-      <h2 className="text-4xl font-black mb-10">Gallery</h2>
+    <section className="min-h-screen bg-[#fff7e6] flex flex-col items-center justify-center gap-6">
+      <h1 className="text-4xl font-bold">Gallery</h1>
 
       {/* PHONE FRAME */}
-      <div className="w-[320px] h-[620px] bg-black rounded-[40px] p-4 shadow-2xl border-4 border-black">
-        {/* SCREEN */}
-        <div className="w-full h-full bg-white rounded-[30px] overflow-x-scroll snap-x snap-mandatory flex no-scrollbar">
-          {images.map((img, index) => (
-            <div
-              key={index}
-              className="min-w-full h-full snap-center flex flex-col items-center justify-center p-4"
-            >
-              <img
-                src={img.src}
-                alt="Rohit Sharma"
-                className="w-full h-[420px] object-cover rounded-xl"
-              />
-              <p className="mt-4 text-center font-semibold">
-                {img.caption}
-              </p>
-            </div>
-          ))}
+      <div className="w-[280px] h-[520px] bg-black rounded-[40px] p-3 shadow-xl">
+        <div className="bg-white w-full h-full rounded-[28px] flex flex-col items-center justify-center overflow-hidden">
+          
+          <Image
+            src={images[index].src}
+            alt="Rohit Sharma"
+            width={220}
+            height={300}
+            className="object-cover rounded-xl"
+          />
+
+          <p className="mt-4 font-semibold text-center">
+            {images[index].caption}
+          </p>
         </div>
       </div>
 
-      <p className="mt-6 text-sm text-gray-600">
-        Swipe left → to view more
-      </p>
+      {/* CONTROLS */}
+      <div className="flex gap-4">
+        <button
+          onClick={() => setIndex((index - 1 + images.length) % images.length)}
+          className="px-4 py-2 bg-yellow-400 border-2 border-black"
+        >
+          ◀ Prev
+        </button>
+
+        <button
+          onClick={() => setIndex((index + 1) % images.length)}
+          className="px-4 py-2 bg-pink-400 border-2 border-black"
+        >
+          Next ▶
+        </button>
+      </div>
     </section>
   );
 }
